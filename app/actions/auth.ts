@@ -1,9 +1,9 @@
 "use server"
 
-import { redirect } from "next/navigation"
-import { validateCredentials, createSession, destroySession } from "@/lib/auth"
+import { validateCredentials } from "@/lib/auth"
+import type { User } from "@/lib/auth"
 
-export async function login(formData: FormData) {
+export async function login(prevState: { error: string | null; user?: User } | null, formData: FormData) {
   const username = formData.get("username") as string
   const password = formData.get("password") as string
 
@@ -13,11 +13,5 @@ export async function login(formData: FormData) {
     return { error: "Invalid credentials" }
   }
 
-  await createSession(user)
-  redirect("/dashboard")
-}
-
-export async function logout() {
-  await destroySession()
-  redirect("/login")
+  return { error: null, user }
 }

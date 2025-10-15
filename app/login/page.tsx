@@ -1,13 +1,19 @@
-import { redirect } from "next/navigation"
-import { getSession } from "@/lib/auth"
+"use client"
+
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { useAuthStore } from "@/lib/store/auth-store"
 import { LoginForm } from "@/components/login-form"
 
-export default async function LoginPage() {
-  const session = await getSession()
+export default function LoginPage() {
+  const router = useRouter()
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
 
-  if (session) {
-    redirect("/dashboard")
-  }
+  useEffect(() => {
+    if (isAuthenticated()) {
+      router.push("/dashboard")
+    }
+  }, [isAuthenticated, router])
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4">

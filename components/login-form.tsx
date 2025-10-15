@@ -1,26 +1,47 @@
 "use client"
 
-import { useState } from "react"
+import { useActionState, useEffect, useState } from "react"
+import { useFormStatus } from "react-dom"
+import { useRouter } from "next/navigation"
 import { login } from "@/app/actions/auth"
+import { useAuthStore } from "@/lib/store/auth-store"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
+function SubmitButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button type="submit" className="w-full" disabled={pending}>
+      {pending ? "Signing in..." : "Sign in"}
+    </Button>
+  )
+}
+
 export function LoginForm() {
-  const [error, setError] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+  const setUser = useAuthStore((state) => state.setUser)
+  const [redirecting, setRedirecting] = useState(false)
+  const [state, formAction] = useActionState(login, { error: null })
 
-  async function handleSubmit(formData: FormData) {
-    setLoading(true)
-    setError(null)
-
-    const result = await login(formData)
-
-    if (result?.error) {
-      setError(result.error)
-      setLoading(false)
+  useEffect(() => {
+    if (state?.user && !redirecting) {
+      setRedirecting(true)
+      setUser(state.user)
+      router.push("/dashboard")
     }
+  }, [state, redirecting, setUser, router])
+
+  if (redirecting) {
+    return (
+      <Card className="w-full max-w-md border-border">
+        <CardContent className="pt-6">
+          <div className="text-center text-muted-foreground">Redirecting to dashboard...</div>
+        </CardContent>
+      </Card>
+    )
   }
 
   return (
@@ -32,7 +53,7 @@ export function LoginForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={handleSubmit} className="space-y-4">
+        <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="username">Username</Label>
             <Input
@@ -55,10 +76,10 @@ export function LoginForm() {
               className="bg-secondary border-border"
             />
           </div>
-          {error && <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">{error}</div>}
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Signing in..." : "Sign in"}
-          </Button>
+          {state?.error && (
+            <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">{state.error}</div>
+          )}
+          <SubmitButton />
           <div className="text-xs text-muted-foreground mt-4 space-y-1">
             <p>Demo credentials:</p>
             <p className="font-mono">admin / admin123 (full access)</p>

@@ -1,7 +1,8 @@
 "use client"
 
-import type { User } from "@/lib/auth"
-import { logout } from "@/app/actions/auth"
+import type { User } from "@/lib/store/auth-store"
+import { useAuthStore } from "@/lib/store/auth-store"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
@@ -13,6 +14,13 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ user }: DashboardHeaderProps) {
   const pathname = usePathname()
+  const router = useRouter()
+  const logout = useAuthStore((state) => state.logout)
+
+  const handleLogout = () => {
+    logout()
+    router.push("/login")
+  }
 
   return (
     <header className="border-b border-border bg-card">
@@ -47,11 +55,9 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
         </div>
         <div className="flex items-center gap-4">
           <span className="text-sm text-muted-foreground">{user.username}</span>
-          <form action={logout}>
-            <Button variant="outline" size="sm" type="submit">
-              Logout
-            </Button>
-          </form>
+          <Button variant="outline" size="sm" onClick={handleLogout}>
+            Logout
+          </Button>
         </div>
       </div>
     </header>
