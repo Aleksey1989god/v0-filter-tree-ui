@@ -48,14 +48,16 @@ export default function SchemaPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="space-y-6">
         <div>
-          <h2 className="text-3xl font-bold mb-2">OpenAPI Schema</h2>
-          <p className="text-muted-foreground">Load an OpenAPI schema to use its fields in your filter trees</p>
+          <h2 className="text-3xl font-bold mb-2">Схема OpenAPI</h2>
+          <p className="text-muted-foreground">
+            Загрузите схему OpenAPI для использования её полей в деревьях фильтров
+          </p>
         </div>
 
         <Card className="border-border">
           <CardHeader>
-            <CardTitle>Load Schema</CardTitle>
-            <CardDescription>Import an OpenAPI schema from a URL or upload a JSON file</CardDescription>
+            <CardTitle>Загрузить схему</CardTitle>
+            <CardDescription>Импортируйте схему OpenAPI из URL или загрузите JSON файл</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex gap-2">
@@ -70,12 +72,12 @@ export default function SchemaPage() {
                 {loading ? (
                   <>
                     <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                    Loading...
+                    Загрузка...
                   </>
                 ) : (
                   <>
                     <Upload className="h-4 w-4 mr-2" />
-                    Load URL
+                    Загрузить URL
                   </>
                 )}
               </Button>
@@ -86,7 +88,7 @@ export default function SchemaPage() {
                 <span className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">Or</span>
+                <span className="bg-card px-2 text-muted-foreground">Или</span>
               </div>
             </div>
 
@@ -94,7 +96,7 @@ export default function SchemaPage() {
               <label htmlFor="file-upload" className="cursor-pointer">
                 <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition-colors">
                   <FileJson className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                  <p className="text-sm text-muted-foreground">Click to upload OpenAPI JSON file</p>
+                  <p className="text-sm text-muted-foreground">Нажмите для загрузки OpenAPI JSON файла</p>
                 </div>
                 <input
                   id="file-upload"
@@ -111,7 +113,7 @@ export default function SchemaPage() {
               <div className="flex items-start gap-2 p-3 rounded-md bg-destructive/10 text-destructive">
                 <XCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
                 <div className="flex-1">
-                  <p className="font-semibold">Failed to load schema</p>
+                  <p className="font-semibold">Не удалось загрузить схему</p>
                   <p className="text-sm">{schemaError}</p>
                 </div>
               </div>
@@ -121,11 +123,11 @@ export default function SchemaPage() {
               <div className="flex items-start gap-2 p-3 rounded-md bg-success/10 text-success">
                 <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5" />
                 <div className="flex-1">
-                  <p className="font-semibold">Schema loaded successfully</p>
-                  <p className="text-sm">{fields.length} fields available</p>
+                  <p className="font-semibold">Схема успешно загружена</p>
+                  <p className="text-sm">Доступно полей: {fields.length}</p>
                 </div>
                 <Button variant="ghost" size="sm" onClick={clearSchema}>
-                  Clear
+                  Очистить
                 </Button>
               </div>
             )}
@@ -137,11 +139,11 @@ export default function SchemaPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Available Fields</CardTitle>
-                  <CardDescription>Browse fields from the loaded OpenAPI schema</CardDescription>
+                  <CardTitle>Доступные поля</CardTitle>
+                  <CardDescription>Просмотр полей из загруженной схемы OpenAPI</CardDescription>
                 </div>
                 <Badge variant="outline" className="font-mono">
-                  {fields.length} fields
+                  {fields.length} полей
                 </Badge>
               </div>
             </CardHeader>
@@ -155,9 +157,9 @@ export default function SchemaPage() {
           <Card className="border-border">
             <CardContent className="py-12 text-center">
               <FileJson className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-lg font-semibold mb-2">No Schema Loaded</h3>
+              <h3 className="text-lg font-semibold mb-2">Схема не загружена</h3>
               <p className="text-sm text-muted-foreground">
-                Load an OpenAPI schema to start using its fields in your filter trees
+                Загрузите схему OpenAPI для использования её полей в деревьях фильтров
               </p>
             </CardContent>
           </Card>

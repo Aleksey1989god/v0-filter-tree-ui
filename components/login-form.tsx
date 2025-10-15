@@ -15,7 +15,7 @@ function SubmitButton() {
 
   return (
     <Button type="submit" className="w-full" disabled={pending}>
-      {pending ? "Signing in..." : "Sign in"}
+      {pending ? "Вход..." : "Войти"}
     </Button>
   )
 }
@@ -38,7 +38,7 @@ export function LoginForm() {
     return (
       <Card className="w-full max-w-md border-border">
         <CardContent className="pt-6">
-          <div className="text-center text-muted-foreground">Redirecting to dashboard...</div>
+          <div className="text-center text-muted-foreground">Перенаправление на панель управления...</div>
         </CardContent>
       </Card>
     )
@@ -47,31 +47,31 @@ export function LoginForm() {
   return (
     <Card className="w-full max-w-md border-border">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold">Filter Tree Builder</CardTitle>
+        <CardTitle className="text-2xl font-bold">Конструктор фильтров</CardTitle>
         <CardDescription className="text-muted-foreground">
-          Enter your credentials to access the application
+          Введите учетные данные для доступа к приложению
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form action={formAction} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="username">Username</Label>
+            <Label htmlFor="username">Имя пользователя</Label>
             <Input
               id="username"
               name="username"
               type="text"
-              placeholder="admin or user"
+              placeholder="admin или user"
               required
               className="bg-secondary border-border"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Пароль</Label>
             <Input
               id="password"
               name="password"
               type="password"
-              placeholder="Enter password"
+              placeholder="Введите пароль"
               required
               className="bg-secondary border-border"
             />
@@ -81,9 +81,9 @@ export function LoginForm() {
           )}
           <SubmitButton />
           <div className="text-xs text-muted-foreground mt-4 space-y-1">
-            <p>Demo credentials:</p>
-            <p className="font-mono">admin / admin123 (full access)</p>
-            <p className="font-mono">user / user123 (read-only)</p>
+            <p>Демо учетные данные:</p>
+            <p className="font-mono">admin / admin123 (полный доступ)</p>
+            <p className="font-mono">user / user123 (только чтение)</p>
           </div>
         </form>
       </CardContent>

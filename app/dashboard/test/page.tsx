@@ -77,19 +77,21 @@ export default function TestPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="space-y-6">
         <div>
-          <h2 className="text-3xl font-bold mb-2">Test Filter Trees</h2>
-          <p className="text-muted-foreground">Test your filter trees with sample data and see real-time results</p>
+          <h2 className="text-3xl font-bold mb-2">Тестирование деревьев фильтров</h2>
+          <p className="text-muted-foreground">
+            Тестируйте деревья фильтров с примерами данных и смотрите результаты в реальном времени
+          </p>
         </div>
 
         <Card className="border-border">
           <CardHeader>
-            <CardTitle>Select Filter Tree</CardTitle>
-            <CardDescription>Choose a filter tree to test</CardDescription>
+            <CardTitle>Выберите дерево фильтров</CardTitle>
+            <CardDescription>Выберите дерево фильтров для тестирования</CardDescription>
           </CardHeader>
           <CardContent>
             <Select value={currentTreeId || ""} onValueChange={setCurrentTree}>
               <SelectTrigger className="bg-secondary border-border">
-                <SelectValue placeholder="Select a filter tree..." />
+                <SelectValue placeholder="Выберите дерево фильтров..." />
               </SelectTrigger>
               <SelectContent>
                 {trees.map((tree) => (
@@ -110,17 +112,17 @@ export default function TestPage() {
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div>
-                        <CardTitle>Test Data</CardTitle>
-                        <CardDescription>Enter JSON data to test against the filter tree</CardDescription>
+                        <CardTitle>Тестовые данные</CardTitle>
+                        <CardDescription>Введите JSON данные для тестирования дерева фильтров</CardDescription>
                       </div>
                       <div className="flex items-center gap-2">
                         <Button variant="outline" size="sm" onClick={handleReset}>
                           <RotateCcw className="h-4 w-4 mr-2" />
-                          Reset
+                          Сбросить
                         </Button>
                         <Button size="sm" onClick={handleRunTest}>
                           <Play className="h-4 w-4 mr-2" />
-                          Run Test
+                          Запустить тест
                         </Button>
                       </div>
                     </div>
@@ -145,9 +147,9 @@ export default function TestPage() {
         {!currentTree && (
           <Card className="border-border">
             <CardContent className="py-12 text-center">
-              <h3 className="text-lg font-semibold mb-2">No Filter Tree Selected</h3>
+              <h3 className="text-lg font-semibold mb-2">Дерево фильтров не выбрано</h3>
               <p className="text-sm text-muted-foreground">
-                Select a filter tree from the dropdown above to start testing
+                Выберите дерево фильтров из выпадающего списка выше для начала тестирования
               </p>
             </CardContent>
           </Card>

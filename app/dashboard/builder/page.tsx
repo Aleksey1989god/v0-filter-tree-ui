@@ -138,7 +138,7 @@ export default function BuilderPage() {
         {/* Sidebar - Tree List */}
         <div className="lg:col-span-1 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold">Filter Trees</h2>
+            <h2 className="text-xl font-bold">Деревья фильтров</h2>
             <Button size="sm" onClick={() => setShowNewDialog(true)}>
               <Plus className="h-4 w-4" />
             </Button>
@@ -166,8 +166,8 @@ export default function BuilderPage() {
 
               <Tabs defaultValue="visual" className="w-full">
                 <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="visual">Visual</TabsTrigger>
-                  <TabsTrigger value="text">Text</TabsTrigger>
+                  <TabsTrigger value="visual">Визуальный</TabsTrigger>
+                  <TabsTrigger value="text">Текстовый</TabsTrigger>
                   <TabsTrigger value="json">JSON</TabsTrigger>
                 </TabsList>
                 <TabsContent value="visual" className="space-y-4">
@@ -191,13 +191,13 @@ export default function BuilderPage() {
             </>
           ) : (
             <div className="border border-border rounded-lg p-12 text-center bg-card">
-              <h3 className="text-xl font-semibold mb-2">No Filter Tree Selected</h3>
+              <h3 className="text-xl font-semibold mb-2">Дерево фильтров не выбрано</h3>
               <p className="text-muted-foreground mb-6">
-                Select a filter tree from the list or create a new one to get started.
+                Выберите дерево фильтров из списка или создайте новое для начала работы.
               </p>
               <Button onClick={() => setShowNewDialog(true)}>
                 <Plus className="h-4 w-4 mr-2" />
-                Create New Filter Tree
+                Создать новое дерево фильтров
               </Button>
             </div>
           )}
