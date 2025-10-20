@@ -86,30 +86,6 @@ npm run start
 
 Это создаст оптимизированную production сборку и запустит сервер.
 
-## Структура проекта
-
-\`\`\`
-├── app/                      # Next.js App Router
-│   ├── actions/             # Server Actions
-│   ├── dashboard/           # Страницы дашборда
-│   │   ├── builder/        # Конструктор фильтров
-│   │   ├── schema/         # Управление OpenAPI схемами
-│   │   └── test/           # Тестирование фильтров
-│   ├── login/              # Страница входа
-│   └── layout.tsx          # Корневой layout
-├── components/              # React компоненты
-│   ├── filter-tree/        # Компоненты дерева фильтров
-│   ├── openapi/            # Компоненты OpenAPI
-│   ├── testing/            # Компоненты тестирования
-│   └── ui/                 # UI компоненты (shadcn/ui)
-├── lib/                     # Утилиты и библиотеки
-│   ├── store/              # Zustand stores
-│   ├── schemas/            # Zod схемы валидации
-│   ├── types/              # TypeScript типы
-│   ├── utils/              # Вспомогательные функции
-│   └── auth.ts             # Логика аутентификации
-└── public/                  # Статические файлы
-\`\`\`
 
 ## Использование
 
