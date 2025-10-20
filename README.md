@@ -155,21 +155,6 @@ npx shadcn@latest add [component-name]
 
 ## Деплой
 
-### Vercel (рекомендуется)
-
-Проект автоматически деплоится на Vercel:
-
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/aleksey1989god-2502s-projects/v0-filter-tree-ui)
-
-Для ручного деплоя:
-
-\`\`\`bash
-npm install -g vercel
-vercel
-\`\`\`
-
-### Другие платформы
-
 Проект совместим с любыми платформами, поддерживающими Next.js:
 - Netlify
 - Railway
@@ -205,15 +190,3 @@ PORT=3001 npm run dev
 \`\`\`bash
 npx tsc --noEmit
 \`\`\`
-
-## Лицензия
-
-MIT
-
-## Поддержка
-
-Для вопросов и предложений создавайте issues в репозитории GitHub.
-
----
-
-**Создано с помощью [v0.app](https://v0.app)** ⚡
